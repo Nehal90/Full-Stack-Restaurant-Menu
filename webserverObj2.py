@@ -1,4 +1,4 @@
-#Objective 1 is to get the name of all Restaurants in the Database
+#Objective 2 is to have Edit and Delete links for each restaurant
 
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 import cgi
@@ -28,7 +28,12 @@ class webServerHandler(BaseHTTPRequestHandler):
                 output += "<html><body>"
                 for restaurant in restaurants:
                     output += restaurant.name
+                    output += "</br>"
+                    output += "<a href ='#' >Edit </a>"
+                    output += "</br>"
+                    output += "<a href ='#'>Delete </a>"
                     output += "</br></br></br>"
+
 
                 output += "</body></html>"
                 self.wfile.write(output)
