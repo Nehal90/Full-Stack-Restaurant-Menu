@@ -27,6 +27,8 @@ class webServerHandler(BaseHTTPRequestHandler):
                 self.end_headers()
                 output += "<html><body>"
                 for restaurant in restaurants:
+                    output += str(restaurant.rid)
+                    output += ". "
                     output += restaurant.name
                     output += "</br></br></br>"
 
