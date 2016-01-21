@@ -1,0 +1,144 @@
+CRUD - Create Read Update Delete
+ORM - Object-Relational Mapping
+
+SQLAlchemy DB has four components:
+Configuration, Class, Table, Mapper
+
+
+Operations with SQLAlchemy
+
+In this lesson, we performed all of our CRUD operations with SQLAlchemy on an SQLite database. Before we perform any operations, we must first import the necessary libraries, connect to our restaurantMenu.db, and create a session to interface with the database:
+
+	from sqlalchemy import create_engine
+	from sqlalchemy.orm import sessionmaker
+	from database_setup import Base, Restaurant, MenuItem
+
+	engine = create_engine('sqlite:///restaurantMenu.db')
+	Base.metadata.bind=engine
+	DBSession = sessionmaker(bind = engine)
+	session = DBSession()
+
+
+CREATE
+
+We created a new Restaurant and called it Pizza Palace:
+
+	myFirstRestaurant = Restaurant(name = "Pizza Palace")
+	session.add(myFirstRestaurant)
+	sesssion.commit()
+
+We created a cheese pizza menu item and added it to the Pizza Palace Menu:
+
+	cheesepizza = menuItem(name="Cheese Pizza", description = "Made with all natural ingredients and fresh mozzarella", course="Entree", price="$8.99", restaurant=myFirstRestaurant)
+	session.add(cheesepizza)
+	session.commit()
+
+READ
+
+We read out information in our database using the query method in SQLAlchemy:
+
+	firstResult = session.query(Restaurant).first()
+	firstResult.name
+
+	items = session.query(MenuItem).all()
+	for item in items:
+	    print item.name
+
+UPDATE
+
+In order to update and existing entry in our database, we must execute the following commands:
+
+	Find Entry
+	Reset value(s)
+	Add to session
+	Execute session.commit()
+
+We found the veggie burger that belonged to the Urban Burger restaurant by executing the following query:
+veggieBurgers = session.query(MenuItem).filter_by(name= 'Veggie Burger')
+
+	for veggieBurger in veggieBurgers:
+	    print veggieBurger.id
+	    print veggieBurger.price
+	    print veggieBurger.restaurant.name
+	    print "\n"
+
+Then we updated the price of the veggie burger to $2.99:
+
+	UrbanVeggieBurger = session.query(MenuItem).filter_by(id=8).one()
+	UrbanVeggieBurger.price = '$2.99'
+	session.add(UrbanVeggieBurger)
+	session.commit() 
+
+DELETE
+
+To delete an item from our database we must follow the following steps:
+
+	Find the entry
+	Session.delete(Entry)
+	Session.commit()
+	
+We deleted spinach Ice Cream from our Menu Items database with the following operations:
+
+	spinach = session.query(MenuItem).filter_by(name = 'Spinach Ice Cream').one()
+	session.delete(spinach)
+	session.commit() 
+
+https://sqlalchemy-migrate.readthedocs.org/en/latest/
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Lesson 2:
+
+Commom Protocols:
+
+TCP - enbles info broken in packets, counter part is UDP
+IP - allows messages to be properly routed. DNS (Domain Name Server) is like a web phonebook
+Port: are used to specify which application is using which window, 8080 mostly used for web app
+localhost: means its local, 127.0.0.1
+
+HTTP:
+
+most commom methos:
+Get()
+POST()
+
+Status code are the service reply to client to answer what happened after a service request.
+
+Some commom Service code: 200: Successful GET. 301: Successful POST. 404: File not found
+
+https://docs.python.org/2/library/basehttpserver.html
+
+https://docs.vagrantup.com/v2/networking/forwarded_ports.html
+
+CGI - Common Gateway Interface
+
+https://developer.chrome.com/devtools
+
+Lession 3:
+
+http://simeonfranklin.com/blog/2012/jul/1/python-decorators-in-12-steps/
+
+http://flask.pocoo.org/docs/0.10/quickstart/#routing
+
+https://en.wikipedia.org/wiki/HTML#Character_and_entity_references
+
+http://flask.pocoo.org/docs/0.10/quickstart/#url-building
+
+https://en.wikipedia.org/wiki/Representational_state_transfer
+
+https://en.wikipedia.org/wiki/JSON
+
+
+http://flask.pocoo.org/extensions/
+http://flask.pocoo.org/docs/0.10/patterns/packages/
+https://exploreflask.com/organizing.html#organization-patterns
+https://exploreflask.com/deployment.html
+http://flask.pocoo.org/docs/0.10/quickstart/#logging
+https://pythonhosted.org/flask-mail/
+https://pythonhosted.org/Flask-Security/
+http://flask.pocoo.org/docs/0.10/testing/
+http://flask.pocoo.org/docs/0.10/patterns/jquery/
+
+To run the project in Vagrant, go to:
+C:\Users\NEHAH01\version-control\R-DB\fullstack\vagrant\restaurant
+
