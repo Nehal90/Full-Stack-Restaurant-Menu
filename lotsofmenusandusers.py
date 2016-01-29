@@ -25,26 +25,31 @@ User1 = User(name="Robo Barista", email="tinnyTim@udacity.com",
 session.add(User1)
 session.commit()
 
+User2 = User(name="Ahmed Nehal", email="an25490@gmail.com",
+             picture ='https://lh3.googleusercontent.com/-rs3jvXJp8_A/UYZspNGV60I/AAAAAAAAACQ/liJmb97XHcQ/w139-h140-p/DSC08783.JPG')
+session.add(User2)
+session.commit()
+
 # Menu for UrbanBurger
-restaurant1 = Restaurant(user_id=1, name="Urban Burger")
+restaurant1 = Restaurant(user_id=2, name="Urban Burger")
 
 session.add(restaurant1)
 session.commit()
 
-menuItem2 = MenuItem(user_id=1, name="Veggie Burger", description="Juicy grilled veggie patty with tomato mayo and lettuce",
+menuItem2 = MenuItem(user_id=2, name="Veggie Burger", description="Juicy grilled veggie patty with tomato mayo and lettuce",
                      price="$7.50", course="Entree", restaurant=restaurant1)
 
 session.add(menuItem2)
 session.commit()
 
 
-menuItem1 = MenuItem(user_id=1, name="French Fries", description="with garlic and parmesan",
+menuItem1 = MenuItem(user_id=2, name="French Fries", description="with garlic and parmesan",
                      price="$2.99", course="Appetizer", restaurant=restaurant1)
 
 session.add(menuItem1)
 session.commit()
 
-menuItem2 = MenuItem(user_id=1, name="Chicken Burger", description="Juicy grilled chicken patty with tomato mayo and lettuce",
+menuItem2 = MenuItem(user_id=2, name="Chicken Burger", description="Juicy grilled chicken patty with tomato mayo and lettuce",
                      price="$5.50", course="Entree", restaurant=restaurant1)
 
 session.add(menuItem2)
@@ -88,7 +93,7 @@ session.commit()
 
 
 # Menu for Super Stir Fry
-restaurant2 = Restaurant(user_id=1, name="Super Stir Fry")
+restaurant2 = Restaurant(user_id=2, name="Super Stir Fry")
 
 session.add(restaurant2)
 session.commit()
@@ -132,7 +137,7 @@ session.commit()
 
 
 # Menu for Panda Garden
-restaurant1 = Restaurant(user_id=1, name="Panda Garden")
+restaurant1 = Restaurant(user_id=2, name="Panda Garden")
 
 session.add(restaurant1)
 session.commit()
@@ -170,7 +175,7 @@ session.commit()
 
 
 # Menu for Thyme for that
-restaurant1 = Restaurant(user_id=1, name="Thyme for That Vegetarian Cuisine ")
+restaurant1 = Restaurant(user_id=2, name="Thyme for That Vegetarian Cuisine ")
 
 session.add(restaurant1)
 session.commit()
