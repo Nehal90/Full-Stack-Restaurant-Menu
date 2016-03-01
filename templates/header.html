@@ -6,10 +6,11 @@
 		</a>
 	</div>
 	<div class="col-md-6 text-right">
-		<a href="{{url_for('showLogin')}}">
-			<button class="log-btn btn-default" id="login-button">
-					<p>Click Here to Login </p>
-			</button>
-		</a>
+					{%if 'username' not in session %}
+			<a href="{{url_for('showLogin')}}">Click Here to Login </a>
+			{% else %}
+			<a href="{{url_for('disconnect')}}">Logout </a>
+			{% endif %}
+		
 	</div>
 </div>
